@@ -1,96 +1,29 @@
-# my-mern-app
+# Create React Express App
 
-## GOAL: Build a fullstack MERN App
+## About This Boilerplate
 
-## Steps
+This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
 
-### 1. Setup the server.js
+The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
 
-- Create your `server.js` file.
-- Run `npm init -y`
-- Run `npm install express mongoose dotenv if-env path`
-- Build out the basic server
+## Starting the app locally
 
-```javascript
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
+Start by installing front and backend dependencies. While in this directory, run the following command:
 
-const PORT = process.env.PORT || 3001;
-
-const app = express();
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-mern", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
-
-const connection = mongoose.connection;
-
-connection.on("connected", () => {
-  console.log("Mongoose successfully connected.");
-});
-
-connection.on("error", (err) => {
-  console.log("Mongoose connection error: ", err);
-});
-
-app.get("/api/config", (req, res) => {
-  res.json({
-    success: true,
-  });
-});
-
-app.listen(PORT, () => {
-  console.log(`App is running on http://localhost:${PORT}`);
-});
+```
+npm install
 ```
 
-### 2. Add create-react-app client on top.
+This should install node modules within the server and the client folder.
 
-- In the root, run `npx create-react-app client --use-npm`
-- Run `npm install concurrently -D`
-- Add script: `"client": "cd client && npm run start",` to server package.json
-- Add script `"start-dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",` to server package.json
-- Add `"proxy": "http://localhost:3001",` to the client package.json
+After both installations complete, run the following command in your terminal:
 
-#### Testing and Validation
-
-- Install axios in the client directory
-- Make an API call to the `/api/config` route and log it to the console.
-
-### 3. Set the app up for Production
-
-- Update the scripts object in the server package.json:
-
-```javascript
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
+```
+npm start
 ```
 
-- Add build folder static and route to server.js
+Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-```javascript
-app.use(express.static("client/build"));
-```
+## Deployment (Heroku)
 
-```javascript
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-```
-# Google-Books-Search
+To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
