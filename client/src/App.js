@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-
         <Container maxWidth="md">
           <Header />
           <Switch>
