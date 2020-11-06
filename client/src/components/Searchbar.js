@@ -17,6 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const bookSearch = () => {
+  API.search().then((res) =>
+    this.setState({
+      employees: res.data.results,
+      filteredEmployees: res.data.results,
+    })
+  );
+};
+
 const Searchbar = () => {
   const classes = useStyles();
 
@@ -33,6 +42,7 @@ const Searchbar = () => {
               id="outlined-basic"
               label="Title"
               variant="outlined"
+              onSubmit={(event) => bookSearch(event)}
             />
           </form>
         </Grid>
