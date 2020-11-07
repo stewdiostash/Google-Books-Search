@@ -1,29 +1,33 @@
-# Create React Express App
+# MERN Google Books Search and Save
 
-## About This Boilerplate
+## Table of Contents
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+- [Description](#description)
+- [Screenshot](#screenshot)
+- [URL](#url)
+- [Contributions](#contributions)
+- [License](#license)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Description
 
-## Starting the app locally
+Search queries the Google Books API, displaying a list of 10 matching titles. Favorites can be saved to and deleted from a MongoDB database
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+## Screenshot
 
-```
-npm install
-```
+![Google Books Search UI](-)
 
-This should install node modules within the server and the client folder.
+## URL
 
-After both installations complete, run the following command in your terminal:
+Deployed at https://google-books-material-ui.herokuapp.com/
 
-```
-npm start
-```
+## Contributions
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+Thanks to Kris Renaldi for time and patience
 
-## Deployment (Heroku)
+Makes use of Material UI component system
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+## License
+
+MIT License
+
+Copyright (c) 2020 Andrew Stewart

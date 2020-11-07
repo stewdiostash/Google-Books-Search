@@ -4,28 +4,16 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
-  "@global": {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-    },
-  },
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
   toolbar: {
-    // flexWrap: "wrap",
+    flexWrap: "wrap",
     justifyContent: "space-between",
   },
-  toolbarTitle: {
-    //   flexGrow: 1,
+  title: {
+    // flexGrow: 1,
     marginRight: theme.spacing(4),
-  },
-  link: {
-    margin: theme.spacing(1, 1.5),
   },
 }));
 
@@ -33,39 +21,24 @@ const Navbar = () => {
   const classes = useStyles();
   return (
     <div>
-      <AppBar
-        position="static"
-        color="default"
-        elevation={0}
-        className={classes.appBar}
-      >
+      <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <Typography
-            variant="h5"
+            variant="h6"
             color="inherit"
-            noWrap
-            className={classes.toolbarTitle}
+            // noWrap
+            className={classes.title}
           >
             Google Books
           </Typography>
-          <nav>
-            <Link
-              href="/"
-              variant="button"
-              color="textPrimary"
-              className={classes.link}
-            >
+          <div>
+            <Button href="/" color="inherit">
               Search
-            </Link>
-            <Link
-              href="/saved"
-              variant="button"
-              color="textPrimary"
-              className={classes.link}
-            >
+            </Button>
+            <Button href="/saved" color="inherit">
               Saved
-            </Link>
-          </nav>
+            </Button>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
