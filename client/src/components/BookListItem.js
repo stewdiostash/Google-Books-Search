@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     color: theme.palette.text.secondary,
   },
-  image: {
+  thumb: {
     width: "100%",
     height: "auto",
   },
@@ -22,7 +22,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Results = () => {
+const BookListItem = ({
+  link,
+  image,
+  title,
+  authors,
+  description,
+  // handleSaveButton,
+}) => {
   const classes = useStyles();
   return (
     <Grid container spacing={3}>
@@ -30,20 +37,16 @@ const Results = () => {
         <Grid item xs={12}>
           <Grid container spacing={3}>
             <Grid item xs={3} md={2}>
-              <img
-                className={classes.image}
-                src="https://www.fillmurray.com/200/300"
-                alt="cover"
-              />
+              <img className={classes.thumb} src={image} alt={title} />
             </Grid>
             <Grid item xs={9} md={10}>
               <Grid container spacing={3} className={classes.titleRow}>
                 <Grid item>
                   <Typography variant="h5" gutterBottom>
-                    Book Title
+                    {title}
                   </Typography>
                   <Typography variant="h6" gutterBottom>
-                    Author
+                    {authors}
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -52,19 +55,13 @@ const Results = () => {
                     color="primary"
                     aria-label="contained primary button group"
                   >
-                    <Button>View</Button>
+                    <Button value={link}>View</Button>
                     <Button>Save</Button>
                   </ButtonGroup>
                 </Grid>
               </Grid>
               <Typography variant="body1" gutterBottom>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                pharetra velit ut blandit vulputate. Pellentesque faucibus urna
-                dolor, suscipit semper nibh ullamcorper id. Suspendisse turpis
-                quam, luctus ut diam sit amet, malesuada porta sapien. Ut quis
-                tempor nibh. Morbi fermentum nisl ipsum, id vulputate sapien
-                commodo ut. Phasellus non libero tellus. Integer vel nibh at
-                lacus ullamcorper efficitur quis ac turpis.
+                {description}
               </Typography>
             </Grid>
           </Grid>
@@ -74,4 +71,4 @@ const Results = () => {
   );
 };
 
-export default Results;
+export default BookListItem;

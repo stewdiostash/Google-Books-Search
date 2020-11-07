@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Searchbar from "../components/Searchbar";
-import Results from "../components/Results";
 import API from "../utils/API";
+import Searchbar from "../components/Searchbar";
+import BookListItem from "../components/BookListItem";
 
 const Search = () => {
   const [books, setBooks] = useState([]);
@@ -12,37 +12,50 @@ const Search = () => {
     setQuery(bookQuery);
   };
 
-  const getBooks = () => {
-    API.getBooks(query)
-      .then((res) => {
-        console.log(res.data);
-        setBooks(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
     getBooks();
   };
 
-  // function that does book save
+  const getBooks = () => {
+    API.getBooks(query)
+      .then((res) => {
+        // console.log(res.data.items);
+        setBooks(res.data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(books);
+  };
+
+  // function saves book
   // Books.find
   // Filter through
 
   //Save book function that goes to API books route
 
   return (
-    <div>
+    <>
       <Searchbar
         handleInputChange={handleInputChange}
         handleFormSubmit={handleFormSubmit}
         query={query}
       />
-      <Results />
-    </div>
+      <div>
+        {/* {books.map((book) => (
+          <BookListItem
+            key={book.id}
+            link={book.selfLink}
+            title={book.volumeInfo.title}
+            authors={book.volumeInfo.authors}
+            description={book.volumeInfo.description}
+            image={book.volumeInfo.imageLinks.thumbnail}
+            // handleSaveButton={handleSaveButton}
+          />
+        ))} */}
+      </div>
+    </>
   );
 };
 
