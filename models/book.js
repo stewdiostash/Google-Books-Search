@@ -7,7 +7,7 @@ const bookSchema = new mongoose.Schema({
     required: true,
   },
   authors: {
-    type: Array,
+    type: [String],
     required: true,
   },
   description: {
