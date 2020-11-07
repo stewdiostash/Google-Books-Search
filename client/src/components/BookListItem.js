@@ -7,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 const useStyles = makeStyles((theme) => ({
+  card: {
+    paddingBottom: theme.spacing(4),
+  },
   paper: {
     padding: theme.spacing(2),
     textAlign: "left",
@@ -32,7 +35,7 @@ const BookListItem = ({
 }) => {
   const classes = useStyles();
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={0} className={classes.card}>
       <Paper className={classes.paper}>
         <Grid item xs={12}>
           <Grid container spacing={3}>
