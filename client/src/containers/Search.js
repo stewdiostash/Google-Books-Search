@@ -20,13 +20,13 @@ const Search = () => {
   const getBooks = () => {
     API.getBooks(query)
       .then((res) => {
-        // console.log(res.data.items);
+        console.log(res.data.items);
         setBooks(res.data.items);
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(books);
+    // console.log(books);
   };
 
   // function saves book
@@ -43,7 +43,7 @@ const Search = () => {
         query={query}
       />
       <div>
-        {/* {books.map((book) => (
+        {books.map((book) => (
           <BookListItem
             key={book.id}
             link={book.selfLink}
@@ -53,7 +53,7 @@ const Search = () => {
             image={book.volumeInfo.imageLinks.thumbnail}
             // handleSaveButton={handleSaveButton}
           />
-        ))} */}
+        ))}
       </div>
     </>
   );
