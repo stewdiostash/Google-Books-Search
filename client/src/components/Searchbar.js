@@ -17,16 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const bookSearch = () => {
-  API.search().then((res) =>
-    this.setState({
-      employees: res.data.results,
-      filteredEmployees: res.data.results,
-    })
-  );
-};
-
-const Searchbar = () => {
+const Searchbar = ({ query, handleInputChange, handleFormSubmit }) => {
   const classes = useStyles();
 
   return (
@@ -36,13 +27,21 @@ const Searchbar = () => {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <form className={classes.form} noValidate autoComplete="off">
+          <form
+            className={classes.form}
+            onSubmit={handleFormSubmit}
+            noValidate
+            autoComplete="off"
+          >
             <TextField
               className={classes.field}
-              id="outlined-basic"
+              id="title"
               label="Title"
               variant="outlined"
-              onSubmit={(event) => bookSearch(event)}
+              type="text"
+              value={query}
+              name="q"
+              onChange={handleInputChange}
             />
           </form>
         </Grid>
