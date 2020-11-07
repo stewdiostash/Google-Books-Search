@@ -26,7 +26,6 @@ const Search = () => {
       .catch((err) => {
         console.log(err);
       });
-    // console.log(books);
   };
 
   // function saves book
@@ -46,7 +45,7 @@ const Search = () => {
         {books.map((book) => (
           <BookListItem
             key={book.id}
-            link={book.selfLink}
+            link={book.volumeInfo.canonicalVolumeLink}
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors}
             description={book.volumeInfo.description}

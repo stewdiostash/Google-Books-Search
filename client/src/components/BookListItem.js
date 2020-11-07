@@ -55,7 +55,7 @@ const BookListItem = ({
                     color="primary"
                     aria-label="contained primary button group"
                   >
-                    <Button value={link}>View</Button>
+                    <Button href={link}>View</Button>
                     <Button>Save</Button>
                   </ButtonGroup>
                 </Grid>
