@@ -25,12 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BookListItem = ({
+const SearchedListItem = ({
   link,
   image,
   title,
   authors,
   description,
+  handleSaveBook,
   // handleSaveButton,
 }) => {
   const classes = useStyles();
@@ -59,7 +60,9 @@ const BookListItem = ({
                     aria-label="contained primary button group"
                   >
                     <Button href={link}>View</Button>
-                    <Button>Save</Button>
+                    <Button value={link} onClick={handleSaveBook}>
+                      Save
+                    </Button>
                   </ButtonGroup>
                 </Grid>
               </Grid>
@@ -74,4 +77,4 @@ const BookListItem = ({
   );
 };
 
-export default BookListItem;
+export default SearchedListItem;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import API from "../utils/API";
 import Searchbar from "../components/Searchbar";
-import BookListItem from "../components/BookListItem";
+import SearchedListItem from "../components/SearchedListItem";
+import Typography from "@material-ui/core/Typography";
 
 const Search = () => {
   const [books, setBooks] = useState([]);
@@ -28,11 +29,15 @@ const Search = () => {
       });
   };
 
-  // function saves book
-  // Books.find
-  // Filter through
-
-  //Save book function that goes to API books route
+  const handleSaveBook = (event) => {
+    API.postBook(event.target.value)
+      .then((res) => {
+        console.log("Book saved");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -41,16 +46,20 @@ const Search = () => {
         handleFormSubmit={handleFormSubmit}
         query={query}
       />
+      <Typography variant="h6" align="left">
+        Search Results
+      </Typography>
+
       <div>
         {books.map((book) => (
-          <BookListItem
+          <SearchedListItem
             key={book.id}
             link={book.volumeInfo.canonicalVolumeLink}
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors}
             description={book.volumeInfo.description}
             image={book.volumeInfo.imageLinks.thumbnail}
-            // handleSaveButton={handleSaveButton}
+            handleSaveBook={handleSaveBook}
           />
         ))}
       </div>

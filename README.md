@@ -14,7 +14,7 @@ Search queries the Google Books API, displaying a list of 10 matching titles. Fa
 
 ## Screenshot
 
-![Google Books Search UI](-)
+![Google Books Search UI](./client/src/assets/images/google-books-search-ui.png)
 
 ## URL
 
